@@ -52,7 +52,11 @@ get_library_name() {
   1) echo "freetype" ;;
   2) echo "fribidi" ;;
   3) echo "gmp" ;;
-  4) echo "gnutls" ;;
+  4)
+    if [[ ${FFMPEG_KIT_BUILD_TYPE} == "tvos" ]]; then
+      echo "gnutls"
+    fi
+    ;;
   5) echo "lame" ;;
   6) echo "libass" ;;
   7) echo "libiconv" ;;
@@ -83,7 +87,11 @@ get_library_name() {
   32) echo "openh264" ;;
   33) echo "vo-amrwbenc" ;;
   34) echo "zimg" ;;
-  35) echo "openssl" ;;
+  35)
+    if [[ ${FFMPEG_KIT_BUILD_TYPE} != "tvos" ]]; then
+      echo "openssl"
+    fi
+    ;;
   36) echo "srt" ;;
   37) echo "giflib" ;;
   38) echo "jpeg" ;;
